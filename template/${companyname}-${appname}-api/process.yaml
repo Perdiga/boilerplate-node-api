@@ -1,0 +1,3 @@
+apps:
+  - script: ./dist/frameworks/webserver/express/server.js
+    name: '${companyname}-${appname}-api'

@@ -1,0 +1,157 @@
+{
+  "extends": [
+		"tslint:latest",
+		"tslint-config-prettier",
+		"tslint-consistent-codestyle"
+	],
+	"rulesDirectory": [
+		"tslint-consistent-codestyle",
+		"node_modules/tslint-lines-between-class-members"
+	],
+	"rules": {
+    "cyclomatic-complexity": [true, 10],
+		"lines-between-class-members": [true, 1],
+		"space-before-function-paren": false,
+		"arrow-return-shorthand": true,
+		"no-unnecessary-callback-wrapper": true,
+		"callable-types": true,
+		"class-name": true,
+		"comment-format": [true, "check-space"],
+    "completed-docs": [true, "classes", "interfaces", "namespaces"],
+		"curly": true,
+		"eofline": false,
+		"forin": true,
+		"import-blacklist": [true, "rxjs/Rx"],
+		"import-spacing": true,
+		"indent": [true, "spaces", 2],
+		"interface-over-type-literal": true,
+		"label-position": true,
+		"max-line-length": [true, 140],
+		"max-file-line-count": [true, 400],
+		"member-access": false,
+		"member-ordering": [
+			true,
+			{
+				"order": [
+					"public-static-field",
+					"protected-static-field",
+					"private-static-field",
+					"public-instance-field",
+					"protected-instance-field",
+					"private-instance-field",
+					"public-static-method",
+					"protected-static-method",
+					"private-static-method",
+					"public-instance-method",
+					"protected-instance-method",
+					"private-instance-method"
+				]
+			}
+		],
+		"only-arrow-functions": false,
+		"no-any": false,
+		"no-arg": true,
+		"no-bitwise": true,
+		"no-console": [
+			true,
+			"debug",
+			"info",
+			"time",
+			"timeEnd",
+			"trace",
+			"log",
+			"warn"
+		],
+		"no-invalid-template-strings": true,
+		"no-construct": true,
+		"no-debugger": true,
+		"no-duplicate-variable": true,
+		"no-duplicate-super": true,
+		"no-empty": true,
+		"no-null-keyword": false,
+		"no-empty-interface": true,
+		"no-eval": true,
+		"no-misused-new": true,
+		"no-non-null-assertion": true,
+		"no-shadowed-variable": true,
+		"no-string-literal": false,
+		"no-string-throw": true,
+		"no-switch-case-fall-through": true,
+		"no-trailing-whitespace": true,
+		"no-unnecessary-initializer": true,
+		"no-unused-expression": false,
+		"no-var-keyword": true,
+		"no-implicit-dependencies": false,
+		"no-submodule-imports": false,
+		"object-literal-sort-keys": false,
+		"one-line": [
+			true,
+			"check-open-brace",
+			"check-catch",
+			"check-else",
+			"check-whitespace"
+		],
+		"type-literal-delimiter": true,
+		"switch-final-break": [true, "always"],
+		"prefer-switch": true,
+		"prefer-const": true,
+		"prefer-method-signature": true,
+		"quotemark": [true, "single"],
+		"radix": true,
+		"semicolon": [true, "always"],
+		"triple-equals": [true, "allow-null-check"],
+		"new-parens": true,
+		"no-inferred-empty-object-type": false,
+		"trailing-comma": [
+			true,
+			{
+				"multiline": "never",
+				"singleline": "never"
+			}
+		],
+		"typedef": [
+			true,
+			"call-signature",
+			"arrow-call-signature",
+			"parameter",
+			"arrow-parameter",
+			"property-declaration",
+			"object-destructuring",
+			"array-destructuring",
+			"member-variable-declaration"
+		],
+		"typedef-whitespace": [
+			true,
+			{
+				"call-signature": "nospace",
+				"index-signature": "nospace",
+				"parameter": "nospace",
+				"property-declaration": "nospace",
+				"variable-declaration": "nospace"
+			},
+			{
+				"call-signature": "space",
+				"index-signature": "space",
+				"parameter": "space",
+				"property-declaration": "space",
+				"variable-declaration": "space"
+			}
+		],
+		"unified-signatures": true,
+		"variable-name": [true, "ban-keywords", "check-format"],
+		"whitespace": [
+			false,
+			"check-branch",
+			"check-decl",
+			"check-operator",
+			"check-separator",
+			"check-type"
+		],
+		"prefer-object-spread": true,
+		"interface-name": [true, "never-prefix"],
+		"newline-before-return": false,
+		"no-consecutive-blank-lines": true,
+		"no-irregular-whitespace": true,
+		"max-classes-per-file": false
+	}
+}

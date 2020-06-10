@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+# App 
+export DEFAULT_FRIENDLY_APP_NAME="Sample"
+export DEFAULT_FRIENDLY_COMPANY_NAME="Empresa"
+
+# Sonarqube
+export DEFAULT_SHOULD_USE_SONAR=true
+export DEFAULT_FRIENDLY_SONARQUBE_URL="localhost"
+export DEFAULT_FRIENDLY_SONARQUBE_PORT="9001"

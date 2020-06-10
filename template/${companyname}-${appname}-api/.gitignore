@@ -1,0 +1,26 @@
+# ------------------------------------------
+# OS-specific
+# ------------------------------------------
+.DS_Store
+**/.DS_Store
+
+# ------------------------------------------
+# Auto generated
+# ------------------------------------------
+dist/
+node_modules/
+yarn-error.log
+coverage/
+src/frameworks/webserver/express/routes.ts
+src/frameworks/webserver/express/swagger.json
+.scannerwork
+git.properties
+
+# ------------------------------------------
+# IDEs
+# ------------------------------------------
+.idea/
+.env
+.vscode
+!.vscode/launch.json
+!.vscode/settings.json
