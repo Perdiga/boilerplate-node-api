@@ -1,6 +1,6 @@
 # Archetype NodeJS
 
-Prove um template para criação de apis/microserviços utilizando express e typescrip com conceitos da arquitetura limpa (Clean Architecture).
+Prove um template para criação de apis/microserviços utilizando express e typescript com conceitos da arquitetura limpa (Clean Architecture).
 
 ---
 
@@ -17,13 +17,13 @@ chmod +x generate-app.sh
 > Todos os parâmetros passados para o script `./generate-app.sh` são opcionais na linha de comando. Caso não informe algum deles o script fará perguntas para obter esses dados.
 
 Pronto! Agora você pode procurar a pasta `${Nome da Empresa}-{Nome da API}-api` no seu workspace.
-Essa aplicação criada já é funcional e contem um endpoint de exemplo. Para mais detalhes, consulte a documentação [documentação](template/$%7Bcompanyname%7D-$%7Bappname%7D-api/README.md) da api.
+Essa aplicação criada é funcional e contém um endpoint de exemplo. Para mais detalhes, consulte a [documentação](template/$%7Bcompanyname%7D-$%7Bappname%7D-api/README.md) da api.
 
 ---
 
 ## Limpando sua nova API
 
-Para ajuda-lo nas primeiras linhas de código, este novo microserviço contem um exemplo de endpoint utilizando o conceito da arquitetura clean. 
+Para ajuda-lo nas primeiras linhas de código, este novo microserviço contém um exemplo de endpoint utilizando o conceito da arquitetura clean. 
 Ao iniciar sua nova API você deverá utilizar ele para aprender, e depois remove-los da aplicação. 
 
 Os arquivos que devem ser removidos são:
@@ -34,5 +34,3 @@ Os arquivos que devem ser removidos são:
 4. `entrypoints\controllers\UserController`
 5. `entrypoints\controllers\models\UserResponse`
 6. `providers\network\UserSampleNetworkProvider`
-
-
