@@ -1,4 +1,4 @@
-# Archetype NodeJS
+# Boilerplate NodeJS
 
 Prove um template para criação de apis/microserviços utilizando express e typescript com conceitos da arquitetura limpa (Clean Architecture).
 

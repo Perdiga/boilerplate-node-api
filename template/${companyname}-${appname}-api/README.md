@@ -1,4 +1,4 @@
-﻿# boilerplate-node-api
+﻿# ${companyname}-${appname}-api
 
 Este é um projeto base para criação de aplicações Express.
 
