@@ -19,7 +19,6 @@
   },
   "dependencies": {
     "ncp": "^2.0.0",
-    "npm-version": "^1.1.0",
     "rimraf": "^3.0.2",
     "husky": "^4.2.5"
   }
