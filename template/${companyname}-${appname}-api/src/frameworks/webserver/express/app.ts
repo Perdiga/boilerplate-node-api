@@ -7,7 +7,7 @@ import { Middlewares } from '../../middlewares/middlewares';
 import { BusinessError, ValidationError, InternalError, NotFoundError } from '../../../core/domain/entities/base/errors';
 import { ValidateError as TsoaValidationError } from 'tsoa';
 
-const APP_NAME = 'archetype-node-api';
+const APP_NAME = '${companyname}-${appname}-api';
 const ENVIRONMENT = process.env.ENVIRONMENT_NAME || 'dev';
 const EXPRESS_ACTUATOR_OPTIONS: Options = {
   basePath: '/management',
