@@ -1,4 +1,4 @@
-﻿# archetype-node-api
+﻿# boilerplate-node-api
 
 Este é um projeto base para criação de aplicações Express.
 
