@@ -1,12 +1,13 @@
 {
   "name": "nodejs-api-template",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "main": "index.js",
   "scripts": {
     "generate-new-api-structure": "node ./index.js"
   },
   "dependencies": {
     "ncp": "^2.0.0",
+    "npm-version": "^1.1.0",
     "rimraf": "^3.0.2"
   }
 }
