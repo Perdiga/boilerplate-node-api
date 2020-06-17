@@ -10,9 +10,7 @@ chmod +x _defaults.sh
 chmod +x _generate-new-api-structure.sh 
 npm install
 ./_generate-new-api-structure.sh "${USER_APP_NAME}"
-#ls generated | xargs -I{} mv generated/{} ../
-#cd ..
-#rm -rf template
+ls generated | xargs -I{} mv generated/{} ../
 
 echo ""
 echo "Aplicação gerada com sucesso."
