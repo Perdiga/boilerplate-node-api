@@ -304,6 +304,11 @@ Exemplo:
 ``` javascript
 @injectable()
 export class CreditNetworkProvider implements CreditService {
+
+  constructor (
+    @inject(AppInterfaces.Network) private network: Network
+  ) { }
+
   // Chama uma API que retorna o valor para a regra A
   public async getRuleAByUser(userId: number): Promise<number> {
     const url = `any_url`;
