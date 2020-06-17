@@ -8,7 +8,6 @@ else
     source ./_defaults-test.sh
 fi
 
-
 FRIENDLY_COMPANY_NAME=$1
 FRIENDLY_APPLICATION_NAME=$2
 SHOULD_USE_SONAR=$3
@@ -41,7 +40,6 @@ export SHOULD_USE_SONAR="${SHOULD_USE_SONAR:-$DEFAULT_SHOULD_USE_SONAR}"
 
 if [ "${SHOULD_USE_SONAR}" == 'true' ]
 then
-
     echo
     read -p "[SonarQube] Qual a url de acesso ao sonarqube? (Padrão: \"${DEFAULT_FRIENDLY_SONARQUBE_URL}\"): " FRIENDLY_SONARQUBE_URL
   
