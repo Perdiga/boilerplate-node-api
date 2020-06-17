@@ -10,6 +10,7 @@
   "scripts": {
     "generate:new-api": "node ./index.js",
     "generate": "./generate-app.sh",
+    "test": "BOILERPLATE_ENV='TEST' && chmod +x _test-generated-api.sh && ./_test-generated-api.sh",
     "preversion": "",
     "version:major": "npm version major --force -m 'Updating the project major version %s'",
     "version:minor": "npm version minor --force -m 'Updating the project minor version %s'",

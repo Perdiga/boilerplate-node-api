@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+export BOILERPLATE_ENV="PROD"
 
 # App 
 export DEFAULT_FRIENDLY_APP_NAME="Sample"

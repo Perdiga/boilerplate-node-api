@@ -1,6 +1,13 @@
 #!/usr/bin/env bash
 
-source ./_defaults.sh
+if [ "${BOILERPLATE_ENV}" == "PROD" ]
+then
+    source ./_defaults.sh
+else
+    source ./_defaults.sh
+    source ./_defaults-test.sh
+fi
+
 
 FRIENDLY_COMPANY_NAME=$1
 FRIENDLY_APPLICATION_NAME=$2
@@ -48,4 +55,3 @@ export FRIENDLY_SONARQUBE_URL="${FRIENDLY_SONARQUBE_URL:-$DEFAULT_FRIENDLY_SONAR
 export FRIENDLY_SONARQUBE_PORT="${FRIENDLY_SONARQUBE_PORT:-$DEFAULT_FRIENDLY_SONARQUBE_PORT}"
 
 
-npm run generate:new-api
