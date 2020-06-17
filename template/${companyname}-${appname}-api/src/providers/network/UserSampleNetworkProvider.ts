@@ -2,7 +2,7 @@ import { injectable, inject } from 'inversify';
 import { UserService } from '../../core/usecases/service/UserService';
 import { UserEntity } from '../../core/domain/entities/UserEntity';
 import { AppInterfaces } from '../../core/domain/entities/base/appInterfaces';
-import * as Network from './http';
+import * as Network from '../../frameworks/network/http';
 
 /**
  * Service implementation for the UserService contract

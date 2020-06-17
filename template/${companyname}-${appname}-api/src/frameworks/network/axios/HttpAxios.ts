@@ -1,8 +1,8 @@
 import { injectable } from 'inversify';
 import axios, { AxiosRequestConfig } from 'axios';
-import { HttpOptions as Options } from '../../../providers/network/http/HttpOptions';
-import { HttpResponse } from '../../../providers/network/http/HttpResponse';
-import Http from '../../../providers/network/http/http';
+import { HttpOptions as Options } from '../http/HttpOptions';
+import { HttpResponse } from '../http/HttpResponse';
+import Http from '../http/http';
 
 /**
  * A client for executing HTTP requests

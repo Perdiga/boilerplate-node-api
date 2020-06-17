@@ -7,8 +7,8 @@ import { UserEntity } from '../../../core/domain/entities/UserEntity';
 import { UserController } from '../../../entrypoints/controllers/UserController';
 import { UserSampleNetworkProvider } from '../../../providers/network/UserSampleNetworkProvider';
 import { AppInterfaces } from '../../../core/domain/entities/base/appInterfaces';
-import * as Network from '../../http/axios/HttpAxios';
-import Http from '../../../providers/network/http/http';
+import * as Network from '../../network/axios/HttpAxios';
+import Http from '../../network/http/http';
 
 const iocContainer = new Container();
 decorate(injectable(), Controller);
