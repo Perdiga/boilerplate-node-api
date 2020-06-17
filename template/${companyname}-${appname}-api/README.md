@@ -157,6 +157,35 @@ Para mais informações, consulte o github do middleware.
 
 ---
 
+## Automated versioning 
+
+This project uses `npm-version` to increase the project version.
+On your CI/CD pipeline, you can use the following commands to increase the project version, and create a git tag. 
+
+To increse the major version use:
+``` bash
+npm run version:major
+
+```
+
+
+To increse the minor version use:
+``` bash
+npm run version:minor
+
+```
+
+
+To increse the patch version use:
+``` bash
+npm run version:patch
+
+```
+
+Before updating the version, a command to compile the project will be triggered with a couple of commands to check test cases and lint.
+
+---
+
 ## Arquitetura e Padrões
 
 Este projeto segue os princípios e a estrutura de projeto definidas pelo Robert C. Martin (Uncle Bob) em seu livro "Clean Architecture"

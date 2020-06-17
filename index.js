@@ -1,6 +1,7 @@
 const path = require('path');
 const fs = require('fs');
 const rimraf = require('rimraf')
+const { version } = require('./package.json');
 
 /**
  * Those files will not be copied from the template folder 
@@ -43,6 +44,9 @@ const friendlySonarQubePort = process.env.FRIENDLY_SONARQUBE_PORT;
 const friendlyLowerCaseSonarQubeUrl = friendlySonarQubeUrl.toLowerCase();
 const friendlyLowerCaseSonarQubePort = friendlySonarQubePort.toLowerCase();
 
+//Package
+const boilerplateProjectVersion = version
+
 /**
  * Register one replacement for each placeholder
  */
@@ -56,8 +60,8 @@ let replacements = {
     "\\$\\{companyName\\}": friendlyLowerCamelCaseCompanyName,
     "\\$\\{companyname\\}": friendlyLowerCaseCompanyName,
     "\\$\\{sonarqubeurl\\}": friendlyLowerCaseSonarQubeUrl,
-    "\\$\\{sonarqubeport\\}": friendlyLowerCaseSonarQubePort
-
+    "\\$\\{sonarqubeport\\}": friendlyLowerCaseSonarQubePort,
+    "\\$\\{boilerplateversion\\}": boilerplateProjectVersion,
 };
 
 /**
@@ -116,11 +120,11 @@ function renameFilesRecursively(dir, list) {
             //Remove Sonar files if necessary
             if (shouldUseSonarQube === 'false' && originalName.includes('analyse.js')) {
                 rimraf.sync(originalName);
-            }else{
+            } else {
                 fs.renameSync(originalName, newName);
                 replaceContents(newName);
             }
-            
+
         }
     });
     return list;

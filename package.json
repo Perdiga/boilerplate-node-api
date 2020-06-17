@@ -1,12 +1,24 @@
 {
-  "name": "nodejs-api-template",
-  "version": "0.0.1",
+  "name": "boilerplate-node-api",
+  "version": "0.0.2",
   "main": "index.js",
+  "description": "",
+  "author": "Mateus Perdigão Domiciano",
+  "keywords": [
+    "A nice generator that creates an express application using clean architecture"
+  ],
   "scripts": {
-    "generate-new-api-structure": "node ./index.js"
+    "generate:new-api": "node ./index.js",
+    "generate": "./generate-app.sh",
+    "preversion": "",
+    "version:major": "npm version major --force -m 'Updating the project major version %s'",
+    "version:minor": "npm version minor --force -m 'Updating the project minor version %s'",
+    "version:patch": "npm version patch --force -m 'Updating the project patch version %s'",
+    "postversion": "git push && git push origin --tags"
   },
   "dependencies": {
     "ncp": "^2.0.0",
+    "npm-version": "^1.1.0",
     "rimraf": "^3.0.2"
   }
 }
