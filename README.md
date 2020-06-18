@@ -1,32 +1,65 @@
 # Boilerplate NodeJS
 
-Prove um template para criação de apis/microserviços utilizando express e typescript com conceitos da arquitetura limpa (Clean Architecture).
+Provide a boilerplate for creating APIs/Microservices using express and typescript and clean architecture.
+
+The API created by this boilerplate is functional and contains an endpoint as an example. 
+Please read the API [documentation](template/$%7Bcompanyname%7D-$%7Bappname%7D-api/README.md) to get more information about the API.
 
 ---
 
-## Criando um novo microserviço
+## Using the boilerplate
 
-Para criar um novo microserviço utilizando este archetype execute os seguintes comandos
+To create a new API using this boilerplate, use the following commands:
+
+1. Clone this repository 
+```bash
+    git clone <this repository>
+```
+2. Make the `generate-app.sh` executable
+```bash
+    chmod +x generate-app.sh
+```
+3. Execute `npm run generate` to generate a new API
+```bash
+    npm run generate
+```
+
+> You can specify some arguments instead of answering the bash questions.
+
+1. First argument: Company name
+2. Second argument: API name
+3. Third argument: Should use SonarQube ?
 
 ```bash
-git clone <this repository>
-cd <your workspace path>
-chmod +x generate-app.sh
-./generate-app.sh "Nome da Empresa" "Nome da API" "Deseja utilizar o sonarqube? (true/false)"
+    npm run generate -- "Company Name" "API Name" false
 ```
-> Todos os parâmetros passados para o script `./generate-app.sh` são opcionais na linha de comando. Caso não informe algum deles o script fará perguntas para obter esses dados.
 
-Pronto! Agora você pode procurar a pasta `${Nome da Empresa}-{Nome da API}-api` no seu workspace.
-Essa aplicação criada é funcional e contém um endpoint de exemplo. Para mais detalhes, consulte a [documentação](template/$%7Bcompanyname%7D-$%7Bappname%7D-api/README.md) da api.
+Done! Now you can find a new folder called `${companyname}-${appname}-api` on your workspace.
 
 ---
 
-## Limpando sua nova API
+## Testing the boilerplate
 
-Para ajuda-lo nas primeiras linhas de código, este novo microserviço contém um exemplo de endpoint utilizando o conceito da arquitetura clean. 
-Ao iniciar sua nova API você deverá utilizar ele para aprender, e depois remove-los da aplicação. 
+To test if the template will be generated correctly, use the following command:
 
-Os arquivos que devem ser removidos são:
+```bash
+    npm run test
+```
+
+This command will generate a new API, and it will try to build routes, compile, execute the tests, lint and other tests
+
+You can build new tests by editing the `_test-generated-api` file.
+
+Also, there is a hook on `pre-push` where it will trigger this test command before pushing the code to git.
+
+---
+
+## Cleaning the new API
+
+To help you in the first new lines, the new microservice will have an example on how to implement an endpoint using the clean architecture.
+After you learn how to code using this boilerplate, you should remove this example from the API.
+
+The following files should be removed:
 
 1. `core\domain\entities\UserEntity`
 2. `core\domain\usecases\GetUserUseCase`
