@@ -1,79 +1,77 @@
 ﻿# ${companyname}-${appname}-api
 
-Este é um projeto base para criação de aplicações Express.
+This is a basic project for creating Express applications.
 
 ---
 
 ## Stack de Tecnologia
 
-| Tecnologia | Papel | 
+| Technology | Role | 
 | --- | --- |
-| **[Typescript](https://www.typescriptlang.org/)** | TypeScript é uma linguagem orientada a objetos de código-fonte aberto. É um superconjunto tipado de JavaScript que é compilado para JavaScript simples. |
-| **[express](https://expressjs.com/)** | Estrutura de API REST, responsável por rotear e analisar solicitações e respostas HTTP | 
-| **[tsoa](https://github.com/lukeautry/tsoa)** | Framework responsável por registrar automaticamente rotas ** Express ** e gerar a documentação ** Swagger ** para todos os controladores REST no aplicativo utilizando anotações nos controllers| 
-| **[InversifyJS](https://github.com/inversify/InversifyJS)** | O InversifyJS é um contêiner leve de inversão de controle (IoC) para aplicativos TypeScript e JavaScript. Um contêiner de IoC usa um construtor de classe para identificar e injetar suas dependências. O InversifyJS possui uma API amigável e incentiva o uso das melhores práticas de OOP e IoC. |
-| **[Jest](https://jestjs.io/)** | Biblioteca responsável pelos testes unitários |
-| **[tsLint](https://palantir.github.io/tslint/)** | Ferramenta de análise de código-fonte typescript que sinaliza erros de programação, bugs, erros estilísticos e construções suspeitas. |
-| **[Swagger](https://swagger.io/)** | Estrutura de software que ajuda os desenvolvedores a projetar, criar, documentar e consumir serviços RESTful |
-| **[SonarQube](https://www.sonarqube.org/)** | Software de inspeção contínua da qualidade do código, para executar revisões automáticas com análise estática do código para detectar bugs, códigos problemáticos e vulnerabilidades  |
-| **[Husky](https://github.com/typicode/husky#readme)** | Framework para garantir a qualidade nos `commits` e nos `push` |
-| **[express-actuator](https://github.com/rcruzper/express-actuator#readme/)** | Middleware que cria automaticamente alguns endpoints para monitorar a aplicação |
+| **[Typescript](https://www.typescriptlang.org/)** | 	TypeScript is an open source object-oriented language. It is a typed superset of JavaScript that is compiled for simple JavaScript. |
+| **[express](https://expressjs.com/)** | REST API structure, responsible for routing and analyzing HTTP requests and responses. | 
+| **[tsoa](https://github.com/lukeautry/tsoa)** | Framework responsible for automatically registering ** Express ** routes and generating ** Swagger ** documentation for all REST controllers in the application using annotations in the controllers. | 
+| **[InversifyJS](https://github.com/inversify/InversifyJS)** | InversifyJS is a lightweight inversion of control (IoC) container for TypeScript and JavaScript applications. An IoC container uses a class constructor to identify and inject its dependencies. InversifyJS has a friendly API and encourages the use of OOP and IoC best practices. |
+| **[Jest](https://jestjs.io/)** | Library responsible for unit tests. |
+| **[tsLint](https://palantir.github.io/tslint/)** | Typescript source code analysis tool that help find programming errors, bugs, stylistic errors and suspicious constructions. |
+| **[Swagger](https://swagger.io/)** | Software framework that helps developers to design, create, document and consume RESTful services. |
+| **[SonarQube](https://www.sonarqube.org/)** | Continuous code quality inspection software. Perform automatic reviews with static code analysis to detect bugs, problematic codes and vulnerabilities |
+| **[Husky](https://github.com/typicode/husky#readme)** | Framework to crete git hooks. It is used to guarantee quality in `commits` and `push` |
+| **[express-actuator](https://github.com/rcruzper/express-actuator#readme/)** | Middleware that automatically creates some endpoints to monitor the application |
 
 ---
 
-## Configurando o VSCode
+## Configuring VSCode
 
 É recomendado a instalação das seguintes extensões, para que facilite a aplicação correta dos padrões de código:
+
+It is recommended to install the following extensions, to help with the application code standards:
 
 - [TSLint](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-typescript-tslint-plugin)
 
 ---
 
-## Executando localmente
+Running locally
 
-1. Instale as dependências do projeto, executando o comando abaixo no terminal:
+1. Install the project's dependencies by running the command below on the terminal:
 
    ```bash
    npm install
    ```
 
-2. Inicie a aplicação:
+2. Launch the application:
 
    ```bash
    npm run start
    ```
 
-3. A Aplicação subirá um swagger com a documentação em:
+3. The Express application will start and it will create a swagger page with the documentation at:
 
    ```
    http://localhost:3000/api-docs/
+
    ```
+The command `start` is a shortcut that runs two other scripts:
 
-O comando `start` é um atalho que executa outros dois scripts: 
+1. `npm run build-routes` - Automatically generates Express routes and Swagger documentation for all controllers;
+2. `npm run dev`- Starts the tsc compiler in watch mode, so you can check the changes without having to restart the application.
 
-1. `npm run build-routes` - Automaticamente gera as rotas do Express e a documentação Swagger para todos os controladores;
-2. `npm run dev` - Inicia o [tsc compiler](https://www.typescriptlang.org/docs/handbook/compiler-options.html) em modo watch,
-assim você pode verificar as mudanças sem a necessidade de reiniciar a aplicação.
-
-Em tempo de desenvolvimento, se você ja executou o primeiro comando e não alterou nenhum controlador, você pode reiniciar a aplicação 
-rodando apenas `npm run dev`
+At development time, if you have already executed the first command and have not changed any controller, you can restart the application by running just `npm run dev`
 
 ---
 
-## Executando via Docker
+## Running thru Docker
 
-Essa é a maneira mais rápida e fácil de executar o aplicativo localmente. Requer apenas que você
-tenha um mecanismo docker instalado em sua máquina. A desvantagem é que ele não fornecerá a
-você é uma maneira simples e padrão de depurar o aplicativo usando seu IDE.
+This is the fastest and easiest way to run the application locally. It only requires that you have a docker mechanism installed on your machine. The downside is that it will not provide you with a simple and standard way to debug the application using your IDE.
 
-1. Crie uma imagem docker executando o seguinte comando:
+1. Create a docker image by running the following command:
 
    ```bash
    npm install
    docker build -t ${companyname}-${appname}-api:latest .
    ```
 
-2. Execute um novo container com a imagem criada:
+2. Run a new container with the created image:
 
    ```bash
    docker run -p 3000:3000 ${companyname}-${appname}-api:latest
@@ -81,79 +79,76 @@ você é uma maneira simples e padrão de depurar o aplicativo usando seu IDE.
 
 ---
 
-## Executando em modo de depuração (Debug)
+## Running in debug mode 
 
-Na estrutura do projeto, existe um arquivo chamado `.vscode/launch.json` que configura automaticamente o depurador do VSCode. 
-Para iniciar a depuração, clique na aba de "Debug" e em seguida em "Start and Debug" na parte superior da janela.
+In this project structure, there is a file called `.vscode/launch.json` that automatically configures the VSCode debugger. To start debugging, click on the "Debug" tab and then "Start and Debug" at the top of the window.
 
-Antes de iniciar a depuração é necessário executar o script que gera as rotas do express (`npm run build-routes`).
+Before starting debugging it is necessary to run the script that generates express routes: `npm run build-routes`.
 
 ---
 
-## Garantindo a qualidade do código, testes unitários e cobertura de testes
+## Ensuring code quality, unit tests and test coverage
 
-Antes de abrir uma requisição de merge, certifique que seu código esteja nos padrões de qualidade definidas para este projeto.
+Before opening a merge request, make sure your code meets the quality standards defined for this project.
 
-1. Execute os testes unitários e verifique a cobertura de testes rodando o seguinte comando:
+1. Run the unit tests and check the test coverage by running the following command:
 
    ```bash
    npm run test:ci
    ```
 
-   Este comando irá executar todos os testes unitários e exibirá um relatório de cobertura. 
-   Uma versão HTML deste relatório será salva em `./coverage/lcov-report/index.html`. 
-   Valide se nenhum ponto do seu código ficou descoberto .
-   Certifique que seu código tenha no mínimo **90%** de cobertura.
+   This command will run all tests and display a coverage report.
+   An HTML version of this report will be saved to `./coverage/lcov-report/index.html.`
+   Make sure that all you code has code coverage.
    
-2. Execute a análise de lint, rodando o seguinte comando:
+2. Run the lint analysis by running the following command:
 
    ```bash
    npm run lint:fix
    ```
 
-   Este comando irá analisar e corrigir possíveis erros de lint, como, por exemplo indentação, falta de ponto e virgula.
-   Erros críticos serão exibidos no final. Corrija todos os erros e rode novamente se necessário
+   This command will analyze and correct possible lint errors, such as indentation, lack of semicolons. Critical errors will be displayed at the end. 
+   Correct all errors and run again if necessary.
 
 ---
 
-## Executando os testes unitários em modo de depuração (Debug)
+## Running unit tests in debug mode
 
-Você pode executar os testes unitários em modo de depuração para corrigir erros mais complexos.
-Existe uma configuração disponível no arquivo `.vscode/launch.json`.
+You can run unit tests in debug mode to fix more complex errors. There is a configuration available in the file `.vscode/launch.json.`
 
-Para executar os testes em modo de depuração, abra a aba de "Debug" e clique em "Debug Tests" na parte superior da janela
+To run the tests in debug mode, open the "Debug" tab and click "Debug Tests" at the top of the window
 
-Antes de iniciar a depuração é necessário executar o script que gera as rotas do express (`npm run build-routes`).
+Before starting debugging it is necessary to run the script that generates express route: `npm run build-routes`.
 
 ---
 
-## Executando o Sonarqube e enviando os resultados para um serviço sonarqube
+## Running Sonarqube and sending the results to a sonarqube service
+
 Para executar a análise do sonarqube e enviá-la para o servidor, execute os seguintes passos
 
-1. Certifique-se que o arquivo analyse.js esteja atualizado com o caminho para o servidor e a versão do projeto corretas.
+1. Make sure the `analyze.js` file is updated with the correct server path and project version.
 
-2. Execute a análise do sonarqube, executando o seguinte comando:
+2. Run the sonarqube analysis by running the following command:
 
    ```bash
    npm run sonar
    ```
 
-   Este comando irá executar todos os testes unitários certificando que todos estão passando e em seguida executará o sonar 
-   e enviará o resultado para o servidor configurado.
+  This command will execute all tests, colect the lcoc file and send to configured sonarqube server.
 
 ---
 
-## Rastreabilidade de código e monitoramento 
+## Code traceability and monitoring
 
-Este projeto utiliza um middleware chamado `express-actuator` que prove 3 endpoints para rastreabilidade de código e monitoramento. São eles:
+This project uses a middleware called `express-actuator` that provides 3 endpoints for code traceability and monitoring. Are they:
 
-| Endpoint | Descrição | 
+| Endpoint | Role | 
 | --- | --- |
-| **/management/info** | Retorna as informações do último commit |
-| **/management/health** | Retorna o status da aplicação |
-| **/management/metrics** | Retorna as metricas da aplicação |
+| **/management/info** | Returns information from the last commit |
+| **/management/health** | Returns the application status |
+| **/management/metrics** | Returns the metrics of the application |
 
-Para mais informações, consulte o github do middleware.
+For more information, consult the [github page](https://github.com/rcruzper/express-actuator).
 
 ---
 
@@ -186,66 +181,68 @@ Before updating the version, a command to compile the project will be triggered 
 
 ---
 
-## Arquitetura e Padrões
+## Architecture and Standards
+This project follows the principles and project structure defined by Robert C. Martin (Uncle Bob) in his book "Clean Architecture"
 
-Este projeto segue os princípios e a estrutura de projeto definidas pelo Robert C. Martin (Uncle Bob) em seu livro "Clean Architecture"
+Robert C. Martin, better known as Uncle Bob, proposed an architecture style called Clean Architecture, where the different parts of the system have a low degree of dependence, that is, poor coupling, resulting in easy maintenance and testability.
 
-Robert C. Martin, mais conhecido como Uncle Bob, propôs um estilo de arquitetura chamado Clean Architecture (Arquitetura Limpa), onde as diferentes partes do sistema, possuem um baixo grau de dependência, ou seja, fraco acoplamento, resultando em uma fácil manutenibilidade e testabilidade.
+This style was derived from other existing architectural ideas, among them the Onion Architecture and Hexagonal Architecture, which in essence, shared similar ideas. Clean Architecture's premises are:
 
-Esse estilo foi derivado de outras idéias arquiteturais existentes, dentre elas a Arquitetura Cebola e Arquitetura Hexagonal que em sua essência, compartilhavam idéias similares.
-As premissas do Clean Architecture são:
+* Framework Independence: The architecture should not depend on any specific Framework, that is, they should only be used as tools.
+* Testability: Business rules can be tested independently, and should not depend on any other elements.
+* Independence of User Interface: The user interface or Front-end must be independent and must not interfere with the functioning of the system.
+* Database independence: The architecture is not tied to a specific database, so we can change the database easily and without affecting the system's business rules.
+* Independence from external agents: The business rule of our system must not depend on any external elements.
 
-* Independência de Framework: A arquitetura não deve depender de algum Framework específico, ou seja, somente devem ser utilizados como ferramentas.
-* Testabilidade: As regras de negócio podem ser testadas de maneira independente, e não devem depender de nenhum outro elemento.
-* Independência de Interface de usuário: A interface do usuário ou Front-end deve ser independente e não deve interferir no funcionamento do sistema.
-* Independência de banco de dados: A arquitetura não está atrelada a um banco de dados específico, com isso, podemos trocar o banco de dados com facilidade e sem afetar as regras de negócio do sistema.
-* Independência de agentes externos: A regra de negócio do nosso sistema não deve depender de nenhum elemento externo.
-
-Um sistema bem estruturado possui baixo acoplamento e alta coesão, portanto, uma das soluções encontradas é a divisão do sistema em camadas, conforme imagem abaixo:
+A well-structured system has low coupling and high cohesion, so one of the solutions found is to divide the system into layers, as shown in the image below:
 
 ![Layers](./docs/layers.png)
 
-As dependências de cada parte, segue da camada externa para a camada interna. O inverso não pode ocorrer, ou seja, um caso de uso pode conhecer a entidade que necessita manipular, porém, uma entidade não conhece seus casos de uso.
+The dependencies of each part follow from the outer layer to the inner layer. The reverse cannot occur, that is, a use case may know the entity it needs to handle, however, an entity does not know its use cases.
 
-Com isso garantimos alta flexibilidade e testabilidade alem de conseguri subistituir quelquer ferramenta(framework) facilmente.
+With this we guarantee high flexibility and testability in addition to being able to easily replace any tool (framework).
 
 ---
 
-## Estrutura do Projeto
+## Project Structure
 
 ```
  └ src 
    └ core
-     └ domain                       → Camada de domínio **(Enterprise core business layer)**
-     └ usecases                     → Camada de serviços da aplicação **(Application Business Rules)**
-   └ providers                      → Camada de adptadores de entrada para a aplicação **(Interface Adapters)**
-     └ ...                          → Provedores de entrada para a aplicação. Ex: APIs externas, acesso ao repositório, segurança etc.
-   └ entrypoints                    → Camada de adptadores de saida da aplicação **(Interface Adapters)**
-     └ controllers                  → Handlers das rotas da API
-   └ framework                      → Camada de frameworks, ferramentas, drivers **(Frameworks & Drivers)**
-     └ configuration                → Configurações gerais da aplicação
-     └ inversionOfcontroll          → Contêiner de inversão de controle (IoC) para aplicativos TypeScript e JavaScript
-     └ middlewares                  → Middlewares para simplificar a criação de APIs RESTful
-     └ webserver                    → Configurações do Express.js (server, routes, plugins, etc.)
-     └ ...                          → Outros frameworks como, axios para acesso a APIs extenas, pino para log, etc.
+     └ domain                       → Enterprise core business layer → e.g.: Entities
+     └ usecases                     → Application Business Rules layer → e.g.: Use Cases
+   └ providers                      → Interface Adapters layer (For Providers) → e.g.: External APIs, Database Access, Security APIs
+   └ entrypoints                    → Interface Adapters layer (For Handlets) -> e.g.: Controllers
+     └ controllers                  → API route handlers
+   └ framework                      → Frameworks & Drivers layer → e.g.: webserver framework, middlewares, logging framewoks
+     └ configuration                → General configurations
+     └ inversionOfcontroll          → IoC framework (InversifyJS)
+     └ middlewares                  → Middlewares to help with APIs
+     └ webserver                    → Webserver framework (Express.js)
+     └ ...                          → Other frameworks 
 ```
 
 ---
 
-### Core (Enterprise core business + Application Business Rules)
-A pasta **core** é responsável por duas camadas da arquitetura clean. 
-A camada **Enterprise core business layer** representada pela subpasta **domain** e camada **Application Business Rules** representada pela subpasta **usecases**.
+### Core (Enterprise core business layer + pplication Business Rules layer)
+The **core** folder is responsible for two layers of the clean architecture.
 
-A camada de **Enterprise core business layer** é responsável por conter as entidades da aplicação com as lógicas críticas de negócio.
-Essa camada é a mais interna na arquitetura o que faz com que seja protegida contra lógicas externas.
+The **Enterprise core business layer** represented by the **domain** subfolder and **Application Business Rules layer** represented by the **usecases subfolder**.
 
-Exemplo: 
-> Para um cliente receber um empréstimo, ele deve atender a alguns requisitos de pontuação de crédito.
+The **Enterprise core business layer** is responsible for containing the application entities with the critical business logic. 
 
-Assim temos que a entidade de crédito tem uma regra crítica que gere se um cliente pode ter um emprestimo ou não
+This layer is the most internal in the architecture which makes it protected against external logic. 
+Also, this layer should not depend on any external element.
+
+E.g.: 
+> A bank customer, want to have a loan, To get a loan he needs to have some requirements.
+> The rule A should be more or equal to 2; The rule B should be more than 10; The rule C should be less than 100
+
+The rule is the critial logic for loan entity. So we have the following entity:
+
 ``` javascript
-// Entidade de Crédito
-export class CreditScore {
+// Loan Entity
+export class Loan {
   ruleA:number;
   ruleB:number;
   ruleC:number;
@@ -256,89 +253,86 @@ export class CreditScore {
     this.ruleC = ruleC;
   }
 
-  //Lógica crítica de negócio para conceder crédito
+  //Critical logic to know if you can get a loan
   public canGetLoan(): boolean {
     if(this.ruleA >= 2 && this.ruleB > 10 && this.ruleC < 100)
-      return true
+      return true;
     else
-      return false
+      return false;
   }
 }
 ```
 
-A camada de **Application Business Rules** é responsável por ter as regras específicas do aplicativo.
-Essas regras, chamamos de **use cases**, que é uma sequência de atividades para atingir um objetivo específico da aplicação. 
+The **Application Business Rules layer** is responsible for having application-specific rules. 
+These rules, we call use cases , which is a sequence of activities to achieve a specific purpose of the application.
 
-Cada use case deve ter somente uma responsabilidade de negócio.
-É uma classe que deve ter um método que será chamado por um controlador.
-Pode ter um construtor para definir suas dependências ou seu contexto de execução.
-Um caso de uso pode interagir na mesma camada, como, por exemplo com interfaces de repositórios, ou na camada de domínio.
+1. Each use case should have only **one** business responsibility. 
+2. It is a class that must have a method that will be called by a controller. 
+3. It can have a constructor to define its dependencies or its execution context. 
+4. A use case can interact at the same layer, as, for example, with repository interfaces, or at the domain layer.
 
-Exemplo:
-> Caso de uso para validar se o cliente pode obter uma concessão de crédito
+E.g.:
+> The bank has a mobile application that wants to show a button to get loan if the customer is eligible to get a loan. 
+> The rules of a customer can be accessed thru an API.
+> You need to return true if the user is eligible to get a loan or false if he is not elegible.
 
-Assim temos um caso de uso que tem uma sequência de atividades para retornar os valores que serão utilizados para calcular se o cliente pode ter uma concessão de crédito.
+So now, we have a sequence of activities that can be described on the following use case:
 
 ``` javascript
 @injectable()
-export class ClientLoanValidatorUseCase {
+export class CustomerLoanValidatorUseCase {
 
   constructor (
-    @inject(AppInterfaces.CreditService) private creditService: CreditService
+    @inject(AppInterfaces.CustomerService) private customerService: CustomerService
   ) { }
 
-  public async checkLoan(userId: number): Promise<boolean> {
-    // Retorna valor para a ruleA de um serviço externo ou banco de dados ou outro
-    const ruleA:number = this.creditService.getRuleAbyUser(userId)
-    // Retorna valor para a ruleB de um serviço externo ou banco de dados ou outro
-    const ruleB:number = this.creditService.getRuleBbyUser(userId)
-    // Retorna valor para a ruleC de um serviço externo ou banco de dados ou outro
-    const ruleC:number = this.creditService.getRuleCbyUser(userId)
+  public async checkLoan(customerId: number): Promise<boolean> {
+    // Get the rule values 
+    const ruleA:number = this.customerService.getRuleAbyUser(customerId);
+    const ruleB:number = this.customerService.getRuleBbyUser(customerId);
+    const ruleC:number = this.customerService.getRuleCbyUser(customerId);
 
-    //Cria uma instância da entidade de crédito
-    const creditScore = new CreditScore(ruleA,ruleB,ruleC)
+    // Create our load entity
+    const loan = new Loan(ruleA,ruleB,ruleC);
 
-    // Chama a lógica crítica de negócio para validação de concessão de crédito
-    return creditScore.canGetLoan();
+    // Call our get loan logic to define if a customer can or cannot have a loan
+    return loan.canGetLoan();
   }
 }
 ```
 
-Dentro da pasta de uses cases também podemos ter outras pastas com definições de interfaces que o caso de uso espera que suas camadas mais exteriores implementem.
+Note that we are not implementing the logic to get the rules. This should be implemented by a provider. 
+So we need to create an interface for that.
 
-Exemplo:
-> Para validadar se o cliente pode receber o crédito, o caso de uso precisa que alguém implemente o código que retorna o valor para cada uma das regras.
-> Assim precisamos criar uma interface. 
-
+E.g.:
 ``` javascript
-export interface CreditService {
+export interface CustomerService {
   getRuleAbyUser(userId: number): number;
   getRuleBbyUser(userId: number): number;
   getRuleCbyUser(userId: number): number;
 }
-
 ```
 
 ---
 
 ### Providers & Entrypoints (Interface Adapters)
-As pastas **providers** e **entrypoints** fazem parte da camada **(Interface Adapters)** da arquitetura clean. 
 
-A pasta **providers** é responsável por implementar métodos que interagem com o mundo exterior para retornar algum dado.
-Podemos ter provedores que acessam banco de dados, APIs, arquivos de sistema, entre outros.
+The **providers** and **entrypoints** folders are part of the layer (Interface Adapters) of the clean architecture.
 
-Exemplo:
-> Para retornar o valor da regra A precisamos acessar uma API externa.
+The **providers** folder is responsible for implementing methods that interact with the outside world to return some data. We may have providers that access databases, APIs, system files, among others.
+
+E.g.:
+> We need to implement a provider that provides the rules for our `CustomerLoanValidatorUseCase` use case
 
 ``` javascript
 @injectable()
-export class CreditNetworkProvider implements CreditService {
+export class CustomerServiceNetworkProvider implements CustomerService {
 
   constructor (
     @inject(AppInterfaces.Network) private network: Network
   ) { }
 
-  // Chama uma API que retorna o valor para a regra A
+  // Call an API that return the value for rule A
   public async getRuleAByUser(userId: number): Promise<number> {
     const url = `any_url`;
 
@@ -346,7 +340,7 @@ export class CreditNetworkProvider implements CreditService {
     return response.value
   }
 
-  // Chama uma API que retorna o valor para a regra B
+  // Call an API that return the value for rule B
   public async getRuleBByUser(userId: number): Promise<number> {
     const url = `any_url`;
 
@@ -354,7 +348,7 @@ export class CreditNetworkProvider implements CreditService {
     return response.value
   }
 
-  // Chama uma API que retorna o valor para a regra C
+  // Call an API that return the value for rule C
   public async getRuleCByUser(userId: number): Promise<number> {
     const url = `any_url`;
 
@@ -364,55 +358,58 @@ export class CreditNetworkProvider implements CreditService {
 }
 ```
 
-A pasta **entrypoints** é responsável por implementar os controladores.
+The **entrypoints** folder is responsible for implementing the controllers.
 
-Os controladores são os pontos de entrada para o contexto da aplicação.
-Eles pegam os dados de entrada e os reembalam de uma forma conveniente para os casos de uso e entidades. 
-Em seguida, eles pegam a saída dos casos de uso e entidades e a reembalam em um formato conveniente para exibição na GUI ou salvamento em um banco de dados.
+Controllers are the entry points for the application context. They take the input data and repack it in a convenient way for use cases and entities. 
 
-Sendo assim eles têm 3 responsabilidades principais: 
+Then, the controllers, takes the use cases response and repack them in a convenient format for display in the GUI or saving to a database.
 
-1. Extrair os parâmetros da requisição;
-2. Chamar um caso de uso;
-3. Retornar uma resposta HTTP;
+So the controllers have 3 main responsibilities:
 
-Exemplo:
-> É preciso expor um endpoint na API que retorne se um usuário pode receber um crédito ou não
+1. Extract the request parameters;
+2. Call a use case;
+3. Return an HTTP response;
+
+E.g.:
+> Now that we have an use case for validate if an user is eligeble to get a loan, 
+> we need to expose an endpoint that will be called from the mobile application.
 
 ``` javascript
 @Route('/')
-@Tags('Credit')
+@Tags('Loans')
 @injectable()
-export class CreditController extends Controller {
+export class LoanController extends Controller {
   constructor (
-    @inject(ClientLoanValidatorUseCase) private clientLoanValidatorUseCase: ClientLoanValidatorUseCase) {
+    @inject(CustomerLoanValidatorUseCase) private customerLoanValidatorUseCase: CustomerLoanValidatorUseCase) {
     super();
   }
 
-  @Get('/credit/valid/loan/{userId}')
+  @Get('/loan/check/{customerId}')
   @Response<BusinessError>('422', 'Business Error')
   @Response<NotFoundError>('404', 'Not Found Error')
-  public async checkLoan(userId: number): Promise<boolean> {
-    const result:number  = await this.clientLoanValidatorUseCase.checkLoan(userId);
+  public async checkLoan(customerId: number): Promise<CheckLoanResponse> {
+    const result:boolean = await this.customerLoanValidatorUseCase.checkLoan(customerId);
 
     return newCheckLoanResponse(result);
   }
 }
 ```
 
+Note that we are using a few declaratores, these declarators will be user to generate the swagger file and the express routes.
+
 ---
 
 ### Frameworks (Frameworks & Drivers)
-A pasta **frameworks** faz parte da camada **(Frameworks & Drivers)** da arquitetura clean. 
 
-Nesta pasta é que todos os frameworks como criação do webserver, conexão com banco de dados, conexão com outras APIs, entre outras devem estar.
-A ideia desta camada é que podemos trocar qualquer framework por um melhor sem que impacte nas nossas regras de negócio e na nossa aplicação 
+The frameworks folder is part of the layer (Frameworks & Drivers) of the clean architecture.
+
+In this folder is that all frameworks such as creating the webserver, connection to database, connection to other APIs, among others must be. The idea of ​​this layer is that we can change any framework for a better one without impacting our business rules and application.
 
 ---
 
 ## Plano de execução
 
-Utilizando os exemplos acima, seria possível dizer que o plano de execução seria similar ao apresentado abaixo.
+Using the examples above, it would be possible to say that the execution plan would be similar to the one presented below.
 
 ![Plano de Execução](./docs/flow.png)
 
