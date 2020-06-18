@@ -1,31 +1,29 @@
 ﻿
 ## Inversify.JS
 
-O InversifyJS é um contêiner de inversão de controle (IoC) para aplicativos TypeScript e JavaScript. 
-Um contêiner de IoC usa um construtor de classe para identificar e injetar suas dependências.
+InversifyJS is an inversion of control (IoC) container for TypeScript and JavaScript applications. An IoC container uses a class constructor to identify and inject its dependencies.
 
-O InversifyJS foi desenvolvido com 4 objetivos principais:
+InversifyJS was developed with 4 main objectives:
 
-* Permitir que desenvolvedores de TypeScript/JavaScript escrevam códigos que cumpram os princípios do SOLID.
-* Facilitar e incentivar a adesão às melhores práticas de POO e IoC.
-* Adicionar o mínimo possível de sobrecarga de tempo de execução.
-* Fornecer uma experiência de desenvolvimento de última geração.
+1. Allow TypeScript / JavaScript developers to write code that meets the principles of SOLID.
+2. Facilitate and encourage adherence to OOP and IoC best practices.
+3. Add as little runtime overhead as possible.
+4. Provide a cutting edge development experience.
+
 ---
 
-## Como usar
+## how to use
 
- Cada vez que um dependência for adicionada ao projeto, ela deve ser declarada no arquivo do `inversify.js`
- 
- Por exemplo
- ``` javascript
+Each time a dependency is added to the project, it must be declared in the `inversify.js` file. 
 
-import { TesteInterface } from 'Interfaces';
+E.g.:
+``` javascript
+import { TestInterface } from 'Interfaces';
 import { AppInterfaces } from '../../../domain/entities/base/appInterfaces';
 import { TesteClasse } from 'Classes';
 
-iocContainer.bind<TesteInterface>(AppInterfaces.TesteInterface).to(TesteClasse);
-
- ```
+iocContainer.bind<TesteInterface>(AppInterfaces.TestInterface).to(TestInterface);
+```
 
 
 
