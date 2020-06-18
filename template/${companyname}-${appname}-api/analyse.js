@@ -11,7 +11,7 @@ scanner(
             "sonar.sources": "src",
             "sonar.tests": "src",
             "sonar.test.inclusions": "**/*.spec.ts",
-            "sonar.exclusions": "**/*.spec.ts,src/frameworks/webserver/express/routes.ts,src/frameworks/webserver/express/server.ts,src/framework/inversionOfControll/inversify/inversify.ts",
+            "sonar.exclusions": "**/*.spec.ts,src/frameworks/**",
             "sonar.javascript.lcov.reportPaths": "coverage/lcov.info",
         },
     },
