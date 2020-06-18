@@ -16,7 +16,7 @@ SHOULD_USE_SONAR=$3
 if [ -z "${FRIENDLY_COMPANY_NAME}" ]
 then
     echo
-    read -p "[Aplicação] Qual o nome da empresa? (Padrão: \"${DEFAULT_FRIENDLY_COMPANY_NAME}\"): " FRIENDLY_COMPANY_NAME
+    read -p "[Application] What is the name of the company? (Default: \"${DEFAULT_FRIENDLY_COMPANY_NAME}\"): " FRIENDLY_COMPANY_NAME
 fi
 
 export FRIENDLY_COMPANY_NAME="${FRIENDLY_COMPANY_NAME:-$DEFAULT_FRIENDLY_COMPANY_NAME}"
@@ -24,7 +24,7 @@ export FRIENDLY_COMPANY_NAME="${FRIENDLY_COMPANY_NAME:-$DEFAULT_FRIENDLY_COMPANY
 if [ -z "${FRIENDLY_APPLICATION_NAME}" ]
 then
     echo
-    read -p "[Aplicação] Qual o nome da API? (Padrão: \"${DEFAULT_FRIENDLY_APP_NAME}\"): " FRIENDLY_APPLICATION_NAME
+    read -p "[Aplicação] What is the name of the API? (Default: \"${DEFAULT_FRIENDLY_APP_NAME}\"): " FRIENDLY_APPLICATION_NAME
 fi
 
 export FRIENDLY_APPLICATION_NAME="${FRIENDLY_APPLICATION_NAME:-$DEFAULT_FRIENDLY_APP_NAME}"
@@ -33,7 +33,7 @@ export FRIENDLY_APPLICATION_NAME="${FRIENDLY_APPLICATION_NAME:-$DEFAULT_FRIENDLY
 if [ -z "${SHOULD_USE_SONAR}" ]
 then
     echo
-    read -p "[Aplicação] Você deseja utilizar o sonarqube neste projeto? (Padrão: \"${DEFAULT_SHOULD_USE_SONAR}\"): " SHOULD_USE_SONAR
+    read -p "[Aplicação] Do you want to use SonarQube in this project? (Default: \"${DEFAULT_SHOULD_USE_SONAR}\"): " SHOULD_USE_SONAR
 fi
 
 export SHOULD_USE_SONAR="${SHOULD_USE_SONAR:-$DEFAULT_SHOULD_USE_SONAR}"
@@ -41,10 +41,10 @@ export SHOULD_USE_SONAR="${SHOULD_USE_SONAR:-$DEFAULT_SHOULD_USE_SONAR}"
 if [ "${SHOULD_USE_SONAR}" == 'true' ]
 then
     echo
-    read -p "[SonarQube] Qual a url de acesso ao sonarqube? (Padrão: \"${DEFAULT_FRIENDLY_SONARQUBE_URL}\"): " FRIENDLY_SONARQUBE_URL
+    read -p "[SonarQube] What is the SonarQube url? (Default: \"${DEFAULT_FRIENDLY_SONARQUBE_URL}\"): " FRIENDLY_SONARQUBE_URL
   
     echo
-    read -p "[SonarQube] Qual a porta de acesso ao sonarqube? (Padrão: \"${DEFAULT_FRIENDLY_SONARQUBE_PORT}\"): " FRIENDLY_SONARQUBE_PORT
+    read -p "[SonarQube] What is the SonarQube port? (Default: \"${DEFAULT_FRIENDLY_SONARQUBE_PORT}\"): " FRIENDLY_SONARQUBE_PORT
     export SHOULD_USE_SONAR=true
 else
     export SHOULD_USE_SONAR=false

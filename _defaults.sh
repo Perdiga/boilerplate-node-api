@@ -3,7 +3,7 @@ export BOILERPLATE_ENV="PROD"
 
 # App 
 export DEFAULT_FRIENDLY_APP_NAME="Sample"
-export DEFAULT_FRIENDLY_COMPANY_NAME="Empresa"
+export DEFAULT_FRIENDLY_COMPANY_NAME="Company"
 
 # Sonarqube
 export DEFAULT_SHOULD_USE_SONAR=true
