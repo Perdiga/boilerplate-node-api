@@ -224,20 +224,25 @@ With this we guarantee high flexibility and testability in addition to being abl
 
 ---
 
-### Core (Enterprise core business + Application Business Rules)
-A pasta **core** é responsável por duas camadas da arquitetura clean. 
-A camada **Enterprise core business layer** representada pela subpasta **domain** e camada **Application Business Rules** representada pela subpasta **usecases**.
+### Core (Enterprise core business layer + pplication Business Rules layer)
+The **core** folder is responsible for two layers of the clean architecture.
 
-A camada de **Enterprise core business layer** é responsável por conter as entidades da aplicação com as lógicas críticas de negócio.
-Essa camada é a mais interna na arquitetura o que faz com que seja protegida contra lógicas externas.
+The **Enterprise core business layer** represented by the **domain** subfolder and **Application Business Rules layer** represented by the **usecases subfolder**.
 
-Exemplo: 
-> Para um cliente receber um empréstimo, ele deve atender a alguns requisitos de pontuação de crédito.
+The **Enterprise core business layer** is responsible for containing the application entities with the critical business logic. 
 
-Assim temos que a entidade de crédito tem uma regra crítica que gere se um cliente pode ter um emprestimo ou não
+This layer is the most internal in the architecture which makes it protected against external logic. 
+Also, this layer should not depend on any external element.
+
+E.g.: 
+> A bank customer, want to have a loan, To get a loan he needs to have some requirements.
+> The rule A should be more or equal to 2; The rule B should be more than 10; The rule C should be less than 100
+
+The rule is the critial logic for loan entity. So we have the following entity:
+
 ``` javascript
-// Entidade de Crédito
-export class CreditScore {
+// Loan Entity
+export class Loan {
   ruleA:number;
   ruleB:number;
   ruleC:number;
@@ -248,89 +253,86 @@ export class CreditScore {
     this.ruleC = ruleC;
   }
 
-  //Lógica crítica de negócio para conceder crédito
+  //Critical logic to know if you can get a loan
   public canGetLoan(): boolean {
     if(this.ruleA >= 2 && this.ruleB > 10 && this.ruleC < 100)
-      return true
+      return true;
     else
-      return false
+      return false;
   }
 }
 ```
 
-A camada de **Application Business Rules** é responsável por ter as regras específicas do aplicativo.
-Essas regras, chamamos de **use cases**, que é uma sequência de atividades para atingir um objetivo específico da aplicação. 
+The **Application Business Rules layer** is responsible for having application-specific rules. 
+These rules, we call use cases , which is a sequence of activities to achieve a specific purpose of the application.
 
-Cada use case deve ter somente uma responsabilidade de negócio.
-É uma classe que deve ter um método que será chamado por um controlador.
-Pode ter um construtor para definir suas dependências ou seu contexto de execução.
-Um caso de uso pode interagir na mesma camada, como, por exemplo com interfaces de repositórios, ou na camada de domínio.
+1. Each use case should have only **one** business responsibility. 
+2. It is a class that must have a method that will be called by a controller. 
+3. It can have a constructor to define its dependencies or its execution context. 
+4. A use case can interact at the same layer, as, for example, with repository interfaces, or at the domain layer.
 
-Exemplo:
-> Caso de uso para validar se o cliente pode obter uma concessão de crédito
+E.g.:
+> The bank has a mobile application that wants to show a button to get loan if the customer is eligible to get a loan. 
+> The rules of a customer can be accessed thru an API.
+> You need to return true if the user is eligible to get a loan or false if he is not elegible.
 
-Assim temos um caso de uso que tem uma sequência de atividades para retornar os valores que serão utilizados para calcular se o cliente pode ter uma concessão de crédito.
+So now, we have a sequence of activities that can be described on the following use case:
 
 ``` javascript
 @injectable()
-export class ClientLoanValidatorUseCase {
+export class CustomerLoanValidatorUseCase {
 
   constructor (
-    @inject(AppInterfaces.CreditService) private creditService: CreditService
+    @inject(AppInterfaces.CustomerService) private customerService: CustomerService
   ) { }
 
-  public async checkLoan(userId: number): Promise<boolean> {
-    // Retorna valor para a ruleA de um serviço externo ou banco de dados ou outro
-    const ruleA:number = this.creditService.getRuleAbyUser(userId)
-    // Retorna valor para a ruleB de um serviço externo ou banco de dados ou outro
-    const ruleB:number = this.creditService.getRuleBbyUser(userId)
-    // Retorna valor para a ruleC de um serviço externo ou banco de dados ou outro
-    const ruleC:number = this.creditService.getRuleCbyUser(userId)
+  public async checkLoan(customerId: number): Promise<boolean> {
+    // Get the rule values 
+    const ruleA:number = this.customerService.getRuleAbyUser(customerId);
+    const ruleB:number = this.customerService.getRuleBbyUser(customerId);
+    const ruleC:number = this.customerService.getRuleCbyUser(customerId);
 
-    //Cria uma instância da entidade de crédito
-    const creditScore = new CreditScore(ruleA,ruleB,ruleC)
+    // Create our load entity
+    const loan = new Loan(ruleA,ruleB,ruleC);
 
-    // Chama a lógica crítica de negócio para validação de concessão de crédito
-    return creditScore.canGetLoan();
+    // Call our get loan logic to define if a customer can or cannot have a loan
+    return loan.canGetLoan();
   }
 }
 ```
 
-Dentro da pasta de uses cases também podemos ter outras pastas com definições de interfaces que o caso de uso espera que suas camadas mais exteriores implementem.
+Note that we are not implementing the logic to get the rules. This should be implemented by a provider. 
+So we need to create an interface for that.
 
-Exemplo:
-> Para validadar se o cliente pode receber o crédito, o caso de uso precisa que alguém implemente o código que retorna o valor para cada uma das regras.
-> Assim precisamos criar uma interface. 
-
+E.g.:
 ``` javascript
-export interface CreditService {
+export interface CustomerService {
   getRuleAbyUser(userId: number): number;
   getRuleBbyUser(userId: number): number;
   getRuleCbyUser(userId: number): number;
 }
-
 ```
 
 ---
 
 ### Providers & Entrypoints (Interface Adapters)
-As pastas **providers** e **entrypoints** fazem parte da camada **(Interface Adapters)** da arquitetura clean. 
 
-A pasta **providers** é responsável por implementar métodos que interagem com o mundo exterior para retornar algum dado.
-Podemos ter provedores que acessam banco de dados, APIs, arquivos de sistema, entre outros.
+The **providers** and **entrypoints** folders are part of the layer (Interface Adapters) of the clean architecture.
 
-Exemplo:
-> Para retornar o valor da regra A precisamos acessar uma API externa.
+The **providers** folder is responsible for implementing methods that interact with the outside world to return some data. We may have providers that access databases, APIs, system files, among others.
+
+E.g.:
+> We need to implement a provider that provides the rules for our `CustomerLoanValidatorUseCase` use case
 
 ``` javascript
 @injectable()
-export class CreditNetworkProvider implements CreditService {
+export class CustomerServiceNetworkProvider implements CustomerService {
 
   constructor (
     @inject(AppInterfaces.Network) private network: Network
   ) { }
 
-  // Chama uma API que retorna o valor para a regra A
+  // Call an API that return the value for rule A
   public async getRuleAByUser(userId: number): Promise<number> {
     const url = `any_url`;
 
@@ -338,7 +340,7 @@ export class CreditNetworkProvider implements CreditService {
     return response.value
   }
 
-  // Chama uma API que retorna o valor para a regra B
+  // Call an API that return the value for rule B
   public async getRuleBByUser(userId: number): Promise<number> {
     const url = `any_url`;
 
@@ -346,7 +348,7 @@ export class CreditNetworkProvider implements CreditService {
     return response.value
   }
 
-  // Chama uma API que retorna o valor para a regra C
+  // Call an API that return the value for rule C
   public async getRuleCByUser(userId: number): Promise<number> {
     const url = `any_url`;
 
@@ -356,55 +358,58 @@ export class CreditNetworkProvider implements CreditService {
 }
 ```
 
-A pasta **entrypoints** é responsável por implementar os controladores.
+The **entrypoints** folder is responsible for implementing the controllers.
 
-Os controladores são os pontos de entrada para o contexto da aplicação.
-Eles pegam os dados de entrada e os reembalam de uma forma conveniente para os casos de uso e entidades. 
-Em seguida, eles pegam a saída dos casos de uso e entidades e a reembalam em um formato conveniente para exibição na GUI ou salvamento em um banco de dados.
+Controllers are the entry points for the application context. They take the input data and repack it in a convenient way for use cases and entities. 
 
-Sendo assim eles têm 3 responsabilidades principais: 
+Then, the controllers, takes the use cases response and repack them in a convenient format for display in the GUI or saving to a database.
 
-1. Extrair os parâmetros da requisição;
-2. Chamar um caso de uso;
-3. Retornar uma resposta HTTP;
+So the controllers have 3 main responsibilities:
 
-Exemplo:
-> É preciso expor um endpoint na API que retorne se um usuário pode receber um crédito ou não
+1. Extract the request parameters;
+2. Call a use case;
+3. Return an HTTP response;
+
+E.g.:
+> Now that we have an use case for validate if an user is eligeble to get a loan, 
+> we need to expose an endpoint that will be called from the mobile application.
 
 ``` javascript
 @Route('/')
-@Tags('Credit')
+@Tags('Loans')
 @injectable()
-export class CreditController extends Controller {
+export class LoanController extends Controller {
   constructor (
-    @inject(ClientLoanValidatorUseCase) private clientLoanValidatorUseCase: ClientLoanValidatorUseCase) {
+    @inject(CustomerLoanValidatorUseCase) private customerLoanValidatorUseCase: CustomerLoanValidatorUseCase) {
     super();
   }
 
-  @Get('/credit/valid/loan/{userId}')
+  @Get('/loan/check/{customerId}')
   @Response<BusinessError>('422', 'Business Error')
   @Response<NotFoundError>('404', 'Not Found Error')
-  public async checkLoan(userId: number): Promise<boolean> {
-    const result:number  = await this.clientLoanValidatorUseCase.checkLoan(userId);
+  public async checkLoan(customerId: number): Promise<CheckLoanResponse> {
+    const result:boolean = await this.customerLoanValidatorUseCase.checkLoan(customerId);
 
     return newCheckLoanResponse(result);
   }
 }
 ```
 
+Note that we are using a few declaratores, these declarators will be user to generate the swagger file and the express routes.
+
 ---
 
 ### Frameworks (Frameworks & Drivers)
-A pasta **frameworks** faz parte da camada **(Frameworks & Drivers)** da arquitetura clean. 
 
-Nesta pasta é que todos os frameworks como criação do webserver, conexão com banco de dados, conexão com outras APIs, entre outras devem estar.
-A ideia desta camada é que podemos trocar qualquer framework por um melhor sem que impacte nas nossas regras de negócio e na nossa aplicação 
+The frameworks folder is part of the layer (Frameworks & Drivers) of the clean architecture.
+
+In this folder is that all frameworks such as creating the webserver, connection to database, connection to other APIs, among others must be. The idea of ​​this layer is that we can change any framework for a better one without impacting our business rules and application.
 
 ---
 
 ## Plano de execução
 
-Utilizando os exemplos acima, seria possível dizer que o plano de execução seria similar ao apresentado abaixo.
+Using the examples above, it would be possible to say that the execution plan would be similar to the one presented below.
 
 ![Plano de Execução](./docs/flow.png)
 
