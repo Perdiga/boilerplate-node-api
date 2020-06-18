@@ -1,32 +1,31 @@
 # Logger
 
-Biblioteca para exibir logs em JSON criada em cima da biblioteca [Pino Logger](https://github.com/pinojs/pino)
+Library to display JSON logs created on top of the [Pino Logger](https://github.com/pinojs/pino) library.
 
 ---
 
-### Como usar
+## How to use
 
-1. Importe a biblioteca e utilize o `Logger` para logar o que for necessário:
-
+1. Import the library and use Logger to log as needed:
    ```javascript
    import { Logger } from 'frameworks/logger';
 
    try {
      // (...)
    } catch (err) {
-     Logger.error('Aconteceu algo errado', err);
+     Logger.error('Something went wrong!', err);
    }
    ```
-
-   Este log irá produzir um output similar ao abaixo:
+   
+   This log will produce an output similar to the one below:
 
    ```bash
-   {"level":20,"time":1583257057027,"pid":19,"hostname":"yourappname-api-d986c964b-sslmk","name":"yourappname-api","msg":"Aconteceu algo errado", "trace": "Uncaught Error: at method (mycode.ts:5:27)","v":1}
+   {"level":20,"time":1583257057027,"pid":19,"hostname":"yourappname-api-d986c964b-sslmk","name":"yourappname-api","msg":"Something went wrong!", "trace": "Uncaught Error: at method (mycode.ts:5:27)","v":1}
    ```
 
 --- 
 
-### Metodos disponíveis 
+## Available methods
 
 ```javascript
     /**
@@ -62,9 +61,6 @@ Biblioteca para exibir logs em JSON criada em cima da biblioteca [Pino Logger](h
 
 ---
 
-### Modo Avançado
+## Advanced Mode
 
-Esse framework for criado em cima da biblioteca [Pino Logger](https://github.com/pinojs/pino).
-Para utilização de recursos avançados por favor olhe a documentação disponivel no site deles
-
-[Voltar para o inicio](../../../../README.md)
+This framework was created on top of the [Pino Logger](https://github.com/pinojs/pino) library . To use advanced features please look at the documentation available on their website.
