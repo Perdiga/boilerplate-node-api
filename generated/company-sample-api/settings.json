@@ -1,0 +1,59 @@
+{
+  "files.exclude": {
+    "dist/**/*": false,
+    "**/.classpath": true,
+    "**/.project": true,
+    "**/.settings": true,
+    "**/.factorypath": true,
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/node_modules/*/**": false
+  },
+  "editor.tabSize": 2,
+  "editor.wordWrap": "wordWrapColumn",
+  "editor.wordWrapColumn": 140,
+  "editor.rulers": [
+    142
+  ],
+  "editor.wrappingIndent": "indent",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.tslint": true
+  },
+  "prettier.disableLanguages": [
+    "typescript"
+  ],
+  "typescript.format.enable": true,
+  "typescript.autoClosingTags": true,
+  "typescript.check.npmIsInstalled": true,
+  "typescript.format.insertSpaceAfterCommaDelimiter": true,
+  "typescript.format.insertSpaceAfterConstructor": true,
+  "typescript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": true,
+  "typescript.format.insertSpaceAfterKeywordsInControlFlowStatements": true,
+  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
+  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": false,
+  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis": false,
+  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingTemplateStringBraces": false,
+  "typescript.format.insertSpaceAfterSemicolonInForStatements": true,
+  "typescript.format.insertSpaceAfterTypeAssertion": false,
+  "typescript.format.insertSpaceBeforeAndAfterBinaryOperators": true,
+  "typescript.format.insertSpaceBeforeFunctionParenthesis": false,
+  "typescript.format.placeOpenBraceOnNewLineForControlBlocks": false,
+  "typescript.format.placeOpenBraceOnNewLineForFunctions": false,
+  "typescript.implementationsCodeLens.enabled": true,
+  "typescript.preferences.importModuleSpecifier": "auto",
+  "typescript.preferences.quoteStyle": "single",
+  "typescript.referencesCodeLens.enabled": false,
+  "typescript.reportStyleChecksAsWarnings": true,
+  "typescript.suggest.enabled": true,
+  "typescript.suggest.paths": true,
+  "typescript.surveys.enabled": false,
+  "typescript.tsc.autoDetect": "on",
+  "typescript.suggest.completeFunctionCalls": true,
+  "typescript.validate.enable": true,
+  "tslint.alwaysShowRuleFailuresAsWarnings": true,
+  "tslint.ignoreDefinitionFiles": true,
+  "tslint.jsEnable": true,
+  "eslint.enable": false,
+  "typescript.tsdk": "node_modules/typescript/lib"
+}

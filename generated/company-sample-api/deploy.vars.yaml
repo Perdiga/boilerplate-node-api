@@ -1,0 +1,5 @@
+default:
+- replicas: 1
+
+prod:
+- replicas: 2
