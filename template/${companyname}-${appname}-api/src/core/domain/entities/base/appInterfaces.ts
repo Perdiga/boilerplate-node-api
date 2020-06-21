@@ -1,4 +1,5 @@
 export const enum AppInterfaces {
   UserService = 'UserService',
-  Http = 'Http'
+  Http = 'Http',
+  Repository = 'Repository'
 }
