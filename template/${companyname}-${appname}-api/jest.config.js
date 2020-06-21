@@ -28,6 +28,10 @@ module.exports = {
   },
   "collectCoverageFrom": [
     "<rootDir>/src/**/*.{ts,tsx}",
-    "!<rootDir>/src/frameworks/**/*.ts"
+    "!<rootDir>/src/**/configurations/**/*.{ts,tsx}",
+    "!<rootDir>/src/**/express/*.{ts,tsx}",
+    "!<rootDir>/src/**/loggers/**/*.{ts,tsx}",
+    "!<rootDir>/src/**/network/**/*.{ts,tsx}",
+    "!<rootDir>/src/**/middlewares/**/*.{ts,tsx}"
   ]
 }

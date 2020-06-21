@@ -1,3 +1,0 @@
-apps:
-  - script: ./dist/frameworks/webserver/express/server.js
-    name: 'company-sample-api'
