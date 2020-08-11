@@ -1,18 +1,16 @@
 {
-  "swagger": {
-    "basePath": "/",
-    "entryFile": "./src/frameworks/webserver/express/server.ts",
+  "entryFile": "./src/frameworks/webserver/express/server.ts",
+  "noImplicitAdditionalProperties": "silently-remove-extras",
+  "controllerPathGlobs": [
+    "./src/entrypoints/**/*Controller.ts"
+  ],
+  "spec": {
     "specVersion": 3,
-    "outputDirectory": "./src/frameworks/webserver/express/",
-    "controllerPathGlobs": [
-      "./src/entrypoints/**/*Controller.ts"
-    ],
-    "host": null
+    "outputDirectory": "./src/frameworks/webserver/express/"
   },
   "routes": {
     "middleware": "express",
     "routesDir": "./src/frameworks/webserver/express/",
-    "entryFile": "./src/frameworks/webserver/express/server.ts",
     "iocModule": "./src/frameworks/inversionOfControll/inversify/inversify.ts"
   }
 }
